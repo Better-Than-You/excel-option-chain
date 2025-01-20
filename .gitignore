@@ -1,0 +1,34 @@
+# Ignore Python bytecode
+# *.pyc
+# *.pyo
+__pycache__/
+__pycache__
+logs/
+
+# Ignore temporary Excel files starting with ~$ (for all .xlsm files)
+~$*.xlsm
+
+# Ignore log files
+# *.log
+
+# Ignore virtual environment folder (if using virtualenv or venv)
+# venv/
+# .venv/
+
+
+#? Meaning of * in .gitignore:
+# *.pyc:
+
+# The * matches any filename that ends with .pyc.
+# Example: It will match file.pyc, test.pyc, program.pyc, etc.
+# This will ignore all files with the .pyc extension in your repository.
+
+# * on its own:
+
+# If used on its own, * can match any string of characters.
+# For example, *.log ignores all files with the .log extension, like error.log, output.log, or debug.log.
+
+#? In your case, you have two Excel files:
+
+# option_chain.xlsm – This is the actual file you want to keep.
+# ~$option_chain.xlsm – This is a temporary file that Excel creates while the original file is open. It should be ignored.
