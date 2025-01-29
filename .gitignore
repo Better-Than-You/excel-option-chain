@@ -4,7 +4,8 @@
 __pycache__/
 __pycache__
 logs/
-
+tempCodeRunnerFile.py
+~$option_chain.xlsm
 # Ignore temporary Excel files starting with ~$ (for all .xlsm files)
 ~$*.xlsm
 

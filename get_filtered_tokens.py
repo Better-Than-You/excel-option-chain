@@ -52,7 +52,7 @@ def get_filtered_tokens():
     # ]
 
     # Filter tokens based on strike and expiry
-    expiry_date = date(2025, 1, 23)
+    expiry_date = date(2025, 1, 30)
     filtered_tokens = nifty_optidx_df[
         nifty_optidx_df['strike'].isin(strike_prices) & 
         nifty_optidx_df['expiry'].isin([expiry_date])

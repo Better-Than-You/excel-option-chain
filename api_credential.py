@@ -3,23 +3,6 @@ from logzero import logger
 import xlwings as xw
 import pyotp
 
-# # Open the Excel workbook
-# wb = xw.Book(r'C:\Users\neera\OneDrive\Desktop\start.xlsx')
-# credential = wb.sheets['credential']
-
-# # Read credentials from the Excel sheet and ensure they are strings
-# client_code = str(credential.range("b1").value).strip()
-# password = str(int(credential.range("b2").value)).strip()  # Force conversion to integer first, then string
-# api_key = str(credential.range("b3").value).strip()
-# totp_secret = str(credential.range("b5").value).strip()
-
-# # Debugging: Print credentials
-# print("CLIENT CODE", client_code)
-# print("Password:", password)
-# print("API Key:", api_key)
-# print("TOTP SECRET", totp_secret)
-
-
 def credential():
     """
     Reads credentials from the Excel sheet and initializes the SmartConnect API session.
@@ -93,3 +76,19 @@ def credential():
 
 
 
+#? faltu hai just for learning
+# # Open the Excel workbook
+# wb = xw.Book(r'C:\Users\neera\OneDrive\Desktop\start.xlsx')
+# credential = wb.sheets['credential']
+
+# # Read credentials from the Excel sheet and ensure they are strings
+# client_code = str(credential.range("b1").value).strip()
+# password = str(int(credential.range("b2").value)).strip()  # Force conversion to integer first, then string
+# api_key = str(credential.range("b3").value).strip()
+# totp_secret = str(credential.range("b5").value).strip()
+
+# # Debugging: Print credentials
+# print("CLIENT CODE", client_code)
+# print("Password:", password)
+# print("API Key:", api_key)
+# print("TOTP SECRET", totp_secret)

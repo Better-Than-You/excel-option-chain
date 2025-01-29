@@ -33,10 +33,15 @@ correlation_id = CORRELATION_ID
 action = 1
 mode = 3
 
+
 token_list = [
     {
         "exchangeType": 2,
         "tokens": token_value
+    },
+    {
+        "exchangeType": 1,
+        "tokens": ["99926000"]
     }
 ]
 
@@ -77,6 +82,7 @@ print(nifty_strike_price)
 sheet["Q32"].value = nifty_strike_price
 sheet["P8"].value = strike_price_roundup_ltp
 
+ 
 # WebSocket callbacks
 def on_data(wsapp, msg):
     try:
@@ -95,7 +101,11 @@ def on_data(wsapp, msg):
         # Logging the received data
         logger.info(f"Received token: {token}, LTP: {ltp}, OI: {oi}, Timestamp: {timestamp}, VOLUME: {volume}")
         
-        
+        # Special token handling (NIFTY: 99926000)
+        if token == 99926000:
+            sheet['Q10'].value = ltp
+            return   # Exit the function here, no further processing(for this function)
+    
         # Iterate through the rows to find the matching token in F or R
         row = 12  # Start at the base row
         while sheet[f'F{row}'].value or sheet[f'AB{row}'].value:  # Stop when both are empty
@@ -200,7 +210,7 @@ finally:
 
 #? Important Notes:- 
 #* Safe Approach
-# ltp = msg.get("last_traded_price", 0) / 100  # Default to 0 if the key doesn't exist #*but ye hamesa exit karega so, no tension
+# ltp = msg.get("last_traded_price", 0) / 100  # Default to 0 if the key doesn't exist #*but ye hamesa exist karta hai api me So, no tension
 # OR
 
 # ltp_raw = msg.get("last_traded_price")
@@ -216,3 +226,8 @@ finally:
 
 #? FORMULA OF DIFFERENT VARIABLES IN OPTION CHAIN
 # ltp_change= current running ltp - previous day's closed price/ltp
+
+#? TOKEN NUMBERS OF SPECIAL SYMBOL
+# Nifty 50 (NIFTY) - New Token: 99926000
+# Nifty Bank (BANKNIFTY) - New Token: 99926009
+# token_value + ["99926000"]
